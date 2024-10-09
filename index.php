@@ -9,21 +9,24 @@ class Movie
 
     function __construct($movieName, $filmDirector, $releaseYear, $filmGenres)
     {
-        $this->movieName;
-        $this->filmDirector;
-        $this->releaseYear;
-        $this->filmGenres;
+        $this->movieName = $movieName;
+        $this->filmDirector = $filmDirector;
+        $this->releaseYear = $releaseYear;
+        $this->filmGenres = $filmGenres;
     }
     
+    public function getMovieDetails(){
+        $genres = implode(", ", $this->filmGenres);
+        return "Movie: {$this->movieName}, Directed by: {$this->filmDirector}, Released in: {$this->releaseYear}, Genres: {$genres}";
+
+    }
 }
 
-$movie = new Movie("topolino", "minnie", "paperino", ["Commedia"]);
-
-var_dump($movie);
+$movie = new Movie("topolino", "mickey mouse", 2023, ["animation", "family"]);
 
 
 
-
+echo $movie->getMovieDetails();
 
 ?>
 
