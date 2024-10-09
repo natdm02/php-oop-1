@@ -31,7 +31,11 @@ class Movie
 }
 
 $movies = [
-    new Movie("Topolino", "Mickey Mouse", 2023, ["Animation", "Family"]),
+    new Movie(  "Topolino",
+                "Mickey Mouse", 
+                2023,
+                ["Animation", "Family"]
+            ),
     new Movie("Frozen", "Jennifer Lee", 2013, ["Animation", "Musical"]),
     new Movie("The Lion King", "Jon Favreau", 2019, ["Adventure", "Drama"]),
     new Movie("Moana", "Ron Clements", 2016, ["Animation", "Adventure"]),
@@ -44,9 +48,9 @@ $movies = [
 
 
 
-foreach ($movies as $movie) {
-    echo $movie->getMovieDetails();
-}
+// foreach ($movies as $movie) {
+//     echo $movie->getMovieDetails();
+// }
 
 
 
@@ -100,11 +104,16 @@ foreach ($movies as $movie) {
 
                 <h1>lista film disney:</h1>
 
-                    <ul>
-                        <li>
+                <ul class="list-group">
 
-                        </li>
-                    </ul>
+                <?php
+                foreach ($movies as $movie) {
+
+                echo '<li class="list-group-item">' . $movie->getMovieDetails() . '</li>';
+
+                }?>
+
+            </ul>
 
         </div>
 
