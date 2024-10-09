@@ -16,17 +16,39 @@ class Movie
     }
     
     public function getMovieDetails(){
-        $genres = implode(", ", $this->filmGenres);
-        return "Movie: {$this->movieName}, Directed by: {$this->filmDirector}, Released in: {$this->releaseYear}, Genres: {$genres}";
 
+        $genres = implode(", ", $this->filmGenres);
+        return "Movie: {$this->movieName},
+                Directed by: {$this->filmDirector}, 
+                Released in: {$this->releaseYear}, 
+                Genres: {$genres}";
+
+    }
+
+    public function updateGenres($newGenres) {
+        $this->filmGenres = $newGenres;
     }
 }
 
-$movie = new Movie("topolino", "mickey mouse", 2023, ["animation", "family"]);
+$movies = [
+    new Movie("Topolino", "Mickey Mouse", 2023, ["Animation", "Family"]),
+    new Movie("Frozen", "Jennifer Lee", 2013, ["Animation", "Musical"]),
+    new Movie("The Lion King", "Jon Favreau", 2019, ["Adventure", "Drama"]),
+    new Movie("Moana", "Ron Clements", 2016, ["Animation", "Adventure"]),
+    new Movie("Toy Story", "John Lasseter", 1995, ["Animation", "Comedy"]),
+    new Movie("Zootopia", "Byron Howard", 2016, ["Animation", "Adventure", "Comedy"]),
+    new Movie("Aladdin", "Guy Ritchie", 2019, ["Adventure", "Fantasy"]),
+    new Movie("Mulan", "Niki Caro", 2020, ["Action", "Adventure"]),
+];
 
 
 
-echo $movie->getMovieDetails();
+
+foreach ($movies as $movie) {
+    echo $movie->getMovieDetails();
+}
+
+
 
 ?>
 
@@ -71,14 +93,23 @@ echo $movie->getMovieDetails();
 </head>
 
 <body>
+
     <main>
+
         <div class="container">
 
-        <div class="row">
-            oop-1
-        </div>
+                <h1>lista film disney:</h1>
+
+                    <ul>
+                        <li>
+
+                        </li>
+                    </ul>
 
         </div>
+
     </main>
+
 </body>
+
 </html>
