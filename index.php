@@ -1,5 +1,19 @@
 <?php
 
+class Genre
+{
+    public $name;
+
+    function __construct($name)
+    {
+        $this->name = $name;
+    }
+
+    public function getGenreName()
+    {
+        return $this->name;
+    }
+}
 class Movie
 {
     public $movieName;
@@ -15,9 +29,15 @@ class Movie
         $this->filmGenres = $filmGenres;
     }
     
-    public function getMovieDetails(){
+    public function getMovieDetails()
+    {
 
-        $genres = implode(", ", $this->filmGenres);
+
+        $genreNames = array_map(function($genre) {
+            return $genre->getGenreName();
+        }, $this->filmGenres);
+
+        $genres = implode(", ", $genreNames);
         return "Movie: {$this->movieName},
                 Directed by: {$this->filmDirector}, 
                 Released in: {$this->releaseYear}, 
@@ -27,22 +47,65 @@ class Movie
 
     public function updateGenres($newGenres) {
         $this->filmGenres = $newGenres;
+
     }
 }
+
+$animation = new Genre("animazione");
+$family = new Genre("famiglia");
+$musical = new Genre("musical");
+$adventure = new Genre("avventura");
+$comedy = new Genre("commedia");
+$drama = new Genre("dramma");
 
 $movies = [
     new Movie(  "Topolino",
                 "Mickey Mouse", 
                 2023,
-                ["Animation", "Family"]
+                [$animation, $family]
             ),
-    new Movie("Frozen", "Jennifer Lee", 2013, ["Animation", "Musical"]),
-    new Movie("The Lion King", "Jon Favreau", 2019, ["Adventure", "Drama"]),
-    new Movie("Moana", "Ron Clements", 2016, ["Animation", "Adventure"]),
-    new Movie("Toy Story", "John Lasseter", 1995, ["Animation", "Comedy"]),
-    new Movie("Zootopia", "Byron Howard", 2016, ["Animation", "Adventure", "Comedy"]),
-    new Movie("Aladdin", "Guy Ritchie", 2019, ["Adventure", "Fantasy"]),
-    new Movie("Mulan", "Niki Caro", 2020, ["Action", "Adventure"]),
+
+    new Movie(  "Frozen", 
+                "Jennifer Lee",
+                2013,
+                [$animation, $musical]
+            ),
+
+    new Movie(  "The Lion King",
+                "Jon Favreau", 
+                2019,
+                [$adventure, $drama]
+            ),
+
+    new Movie(  "Moana",
+                "Ron Clements",
+                2016,
+                [$animation, $adventure]
+            ),
+
+    new Movie(  "Toy Story",
+                "John Lasseter",
+                1995,
+                [$animation, $comedy]
+            ),
+
+    new Movie(  "Zootopia",
+                "Byron Howard",
+                2016,
+                [$animation, $adventure, $comedy]
+            ),
+
+    new Movie(  "Aladdin",
+                "Guy Ritchie",
+                2019,
+                [$adventure, $comedy]
+            ),
+
+    new Movie(  "Mulan", 
+                "Niki Caro", 
+                2020,
+                [$adventure, $drama]
+            ),
 ];
 
 
