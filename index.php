@@ -102,7 +102,7 @@ $movies = [
 
         <div class="container">
 
-                <h1>lista film disney:</h1>
+                <h1><strong>DISNEY MOVIE LIST:</strong></h1>
 
                 <ul class="list-group">
 
