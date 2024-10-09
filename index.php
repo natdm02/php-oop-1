@@ -1,3 +1,57 @@
+<?php
+
+class Movie
+{
+    public $movieName;
+    public $filmDirector;
+    public $releaseYear;
+    public $filmGenres;
+
+    function __construct($movieName, $filmDirector, $releaseYear, $filmGenres)
+    {
+        $this->movieName;
+        $this->filmDirector;
+        $this->releaseYear;
+        $this->filmGenres;
+    }
+    
+}
+
+$movie = new Movie("topolino", "minnie", "paperino", ["Commedia"]);
+
+var_dump($movie);
+
+
+
+
+
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
