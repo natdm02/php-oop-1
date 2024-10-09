@@ -20,13 +20,17 @@ class Movie
     public $filmDirector;
     public $releaseYear;
     public $filmGenres;
+    public $poster;
+    
 
-    function __construct($movieName, $filmDirector, $releaseYear, $filmGenres)
+
+    function __construct($movieName, $filmDirector, $releaseYear, $filmGenres, $poster)
     {
         $this->movieName = $movieName;
         $this->filmDirector = $filmDirector;
         $this->releaseYear = $releaseYear;
         $this->filmGenres = $filmGenres;
+        $this->poster = $poster;
     }
     
     public function getMovieDetails()
@@ -62,85 +66,62 @@ $movies = [
     new Movie(  "Topolino",
                 "Mickey Mouse", 
                 2023,
-                [$animation, $family]
+                [$animation, $family],
+                "assets/img/Topolino.jpg"
             ),
 
     new Movie(  "Frozen", 
                 "Jennifer Lee",
                 2013,
-                [$animation, $musical]
+                [$animation, $musical],
+                "assets/img/frozen.jpg"
             ),
 
     new Movie(  "The Lion King",
                 "Jon Favreau", 
                 2019,
-                [$adventure, $drama]
+                [$adventure, $drama],
+                "assets/img/re leone.jpg"
             ),
 
     new Movie(  "Moana",
                 "Ron Clements",
                 2016,
-                [$animation, $adventure]
+                [$animation, $adventure],
+                "assets/img/moana.jpg"
             ),
 
     new Movie(  "Toy Story",
                 "John Lasseter",
                 1995,
-                [$animation, $comedy]
+                [$animation, $comedy],
+                "assets/img/toystory.png"
             ),
 
     new Movie(  "Zootopia",
                 "Byron Howard",
                 2016,
-                [$animation, $adventure, $comedy]
+                [$animation, $adventure, $comedy],
+                "assets/img/zootopia.jpg"
             ),
 
     new Movie(  "Aladdin",
                 "Guy Ritchie",
                 2019,
-                [$adventure, $comedy]
+                [$adventure, $comedy],
+                "assets/img/aladin.jpeg"
             ),
 
     new Movie(  "Mulan", 
                 "Niki Caro", 
                 2020,
-                [$adventure, $drama]
+                [$adventure, $drama],
+                "assets/img/mulan.jpg"
             ),
 ];
 
 
-
-
-// foreach ($movies as $movie) {
-//     echo $movie->getMovieDetails();
-// }
-
-
-
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -163,23 +144,26 @@ $movies = [
 
     <main>
 
-        <div class="container">
-
-                <h1><strong>DISNEY MOVIE LIST:</strong></h1>
-
-                <ul class="list-group">
-
+    <div class="container">
+            <h1 class="text-center my-4"><strong>DISNEY MOVIE LIST:</strong></h1>
+            <div class="row">
                 <?php
                 foreach ($movies as $movie) {
-
-                echo '<li class="list-group-item">' . $movie->getMovieDetails() . '</li>';
-
-                }?>
-
-            </ul>
-
+                ?>
+                    <div class="col-md-3 mb-4"> <!-- Colonna di dimensione 3 per 4 colonne nella riga -->
+                        <div class="card">
+                            <img src="<?php echo $movie->poster; ?>" class="card-img-top" alt="<?php echo $movie->movieName; ?>">
+                            <div class="card-body text-center">
+                                <h5 class="card-title"><?php echo $movie->movieName; ?></h5>
+                                <p class="card-text"><?php echo $movie->getMovieDetails(); ?></p>
+                            </div>
+                        </div>
+                    </div>
+                <?php
+                }
+                ?>
+            </div>
         </div>
-
     </main>
 
 </body>
